@@ -13,16 +13,16 @@ type TTaskList = {
 }
 
 const Dashboard = () => {
-    const [tasksList, setTasksList] =useState<TTaskList[]>([]);
-    useEffect(()=>{
+    const [tasksList, setTasksList] = useState<TTaskList[]>([]);
+    useEffect(() => {
         const fetchListTodo = async () => {
-            try{
-                const dataListTodo =await getTask("tasks");
+            try {
+                const dataListTodo = await getTask("tasks");
                 setTasksList(dataListTodo);
-            } catch (error){}
+            } catch (error) { }
         };
         fetchListTodo();
-    },[]);
+    }, []);
     return (
         <>
             <div className="">
@@ -34,7 +34,7 @@ const Dashboard = () => {
                     <p>Phuc@gmail.com</p>
                 </div>
                 <div className="text-center">
-                    <Link  to="/"><button className="w-[89px] bg-[#F4C27F] rounded-full text-[10px] font-[400]">Log Out</button></Link>
+                    <Link to="/"><button className="w-[89px] bg-[#F4C27F] rounded-full text-[10px] font-[400]">Log Out</button></Link>
                 </div>
                 <div className="bg-white  pb-[102px] rounded-bl-[19px] rounded-br-[19px]">
                     <div className="mt-[32px] mb-[24px]">
@@ -57,21 +57,20 @@ const Dashboard = () => {
                         </div>
                         <div className="w-[90%] mx-auto h-[150px]">
                             <div className=" overflow-hidden overflow-y-scroll h-[120px]">
-                                
                                 <ul>
-                                {
-                                    tasksList[0] && tasksList.map((todo) => {
-                                        return (
+                                    {
+                                        tasksList[0] && tasksList.map((todo) => {
+                                            return (
                                                 <li key={todo.id}>
-                                                    <Checkbox defaultChecked = {todo.completed} />
+                                                    <Checkbox defaultChecked={todo.completed} />
                                                     <span className="ml-[10px]">
-                                                        {todo.name} 
+                                                        {todo.name}
                                                     </span>
                                                 </li>
                                             )
-                                    })
-                                }
-                            </ul>
+                                        })
+                                    }
+                                </ul>
                             </div>
                         </div>
                     </div>
