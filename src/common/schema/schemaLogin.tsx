@@ -13,6 +13,7 @@ export const schemaLogin = yup
             .matches(/[0-9]/, 'Password requires a number')
             .matches(/[a-z]/, 'Password requires a lowercase letter')
             .matches(/[A-Z]/, 'Password requires an uppercase letter')
-            .matches(/[^\w]/, 'Password requires a symbol'),
+            .matches(/[^\w]/, 'Password requires a symbol')
+            .required(),
     })
     .required();
