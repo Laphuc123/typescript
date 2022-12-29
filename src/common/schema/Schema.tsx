@@ -6,7 +6,6 @@ export const schema = yup
     .object().shape({
         name: yup
             .string()
-            .min(8, "name is too short - minimum 8 characters")
             .max(20)
             .required(),
         email: yup
@@ -15,8 +14,11 @@ export const schema = yup
             .required(),
         password: yup
             .string()
-            .min(8, "password is too short - minimum 8 characters")
-            // .matches(/[a-zA-Z]/, "password can only contain latin letters")
+            .min(8, 'Password must be 8 characters long')
+            .matches(/[0-9]/, 'Password requires a number')
+            .matches(/[a-z]/, 'Password requires a lowercase letter')
+            .matches(/[A-Z]/, 'Password requires an uppercase letter')
+            .matches(/[^\w]/, 'Password requires a symbol')
             .required(),
         confirmPassword: yup
             .string()
@@ -27,7 +29,7 @@ export const schema = yup
                     "Both password need to be the same"
                 )
             })
-            
+
             .required(),
     })
     .required();
